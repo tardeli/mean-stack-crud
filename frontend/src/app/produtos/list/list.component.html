@@ -1,0 +1,43 @@
+<div class="pre-scrollable">
+  <table class="table table-bordered">
+
+    <thead class="thead-light">
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Preço</th>
+        <th>Data Criação</th>
+        <th>Data Alteração</th>
+        <th>Ações</th>
+      </tr>
+
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let produto of produtos">
+        <td>{{produto.nome}}</td>
+        <td>{{produto.descricao}}</td>
+        <td>{{produto.preco}}</td>
+        <td>{{produto.criado_em | date:"dd/MM/yyyy 'às' hh:mm:ss"}}</td>
+        <td>{{produto.alterado_em | date:"dd/MM/yyyy 'às' hh:mm:ss"}}</td>
+
+        <td class="text-right">
+          <div class="row">
+          <div class="col-sm">
+            <button type="button" class="btn btn-warning btn-sm" (click)="edit(produto)">
+              Editar
+            </button>
+          </div>
+          <div class="col-sm">
+            <button type="button" class="btn btn-danger btn-sm" (click)="delete(produto)">
+              Remover
+            </button>
+          </div>
+          </div>
+
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

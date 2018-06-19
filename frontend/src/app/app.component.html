@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="container">
+    <div class="container">
+        <h4 class="alert alert-info" *ngIf="alert">{{alert.message}}</h4>
+    </div>
+
+    <div class="container">
+        <h2>Formulário</h2>
+        <app-form [(produto)]="produto" (save)="submit($event)"></app-form>
+    </div>
+
+    <div class="container">
+        <h2>Listagem</h2>
+        <app-list [produtos]="produtos" (update)="update($event)" (remove)="remove($event)"></app-list>
+    </div>
+</div>>
