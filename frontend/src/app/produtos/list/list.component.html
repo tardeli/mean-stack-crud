@@ -6,9 +6,9 @@
         <th>Nome</th>
         <th>Descrição</th>
         <th>Preço</th>
-        <th>Data Criação</th>
-        <th>Data Alteração</th>
-        <th>Ações</th>
+        <th>Data de Criação</th>
+        <th>Data de Alteração</th>
+        <th style="text-align: center">Ações</th>
       </tr>
 
     </thead>
@@ -17,14 +17,14 @@
       <tr *ngFor="let produto of produtos | async">
         <td>{{produto.nome}}</td>
         <td>{{produto.descricao}}</td>
-        <td>{{produto.preco}}</td>
+        <td>{{produto.preco | currency:'R$'}}</td>
         <td>{{produto.criado_em | date:"dd/MM/yyyy 'às' hh:mm:ss"}}</td>
         <td>{{produto.alterado_em | date:"dd/MM/yyyy 'às' hh:mm:ss"}}</td>
 
         <td class="text-right">
           <div class="row">
           <div class="col-sm">
-            <button type="button" class="btn btn-warning btn-sm" (click)="edit(produto)">
+            <button type="button" class="btn btn-secondary btn-sm" (click)="edit(produto)">
               Editar
             </button>
           </div>
