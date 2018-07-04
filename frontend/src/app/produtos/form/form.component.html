@@ -1,22 +1,29 @@
-<form novalidate [formGroup]="data" (ngSubmit)="submit()" class="form-horizontal">
 
-  <div class="row">
-    <div class="col-md-2 form-group" >
-      <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Nome">
-    </div>
-    <div class="col-md-5 form-group">
-      <input type="text" formControlName="descricao" class="form-control" id="descricao" placeholder="Descrição">
-    </div>
-    <div class="col-md-2 form-group" >
-      <input type="text" formControlName="preco" class="form-control" id="preco" placeholder="Preço">
-    </div>
 
-    <div class="col-md-1 form-group">
-      <button class="btn btn-success" [disabled]="!enableToSave">Salvar</button>
-    </div>
-    <div class="col-md-1 form-group">
-      <button type="reset" class="btn btn-primary" [disabled]="!nome.value">Limpar</button>
-    </div>
-  </div>
 
-</form>
+      <form novalidate [formGroup]="form" (ngSubmit)="submit()" class="form-vertical">
+
+            <div class="row">
+                  <div class="col-md-12 form-group">
+                        <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Nome">
+                  </div>
+                  <div class="col-md-12 form-group">
+                        <input type="text" formControlName="descricao" class="form-control" id="descricao" placeholder="Descrição">
+                  </div>
+                  <div class="col-md-12 form-group">
+                        <input type="text" formControlName="preco" class="form-control" id="preco" placeholder="Preço">
+                  </div>
+            </div>
+
+            <div class="row">
+                  <div class="col-md-1 form-group">
+                        <button class="btn btn-success" [disabled]="!enableToSave">Salvar</button>
+                  </div>
+                  <div class="col-md-1 form-group">
+                        <button type="reset" class="btn btn-primary" [disabled]="!nome.value">Limpar</button>
+                  </div>
+            </div>
+
+
+      </form>
+

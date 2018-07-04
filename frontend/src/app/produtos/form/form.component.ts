@@ -11,31 +11,32 @@ export class FormComponent implements OnInit {
   @Input() produto;
   @Output() save = new EventEmitter<any>();
   public enableToSave: boolean = false;
-  data = new FormGroup({
+  form = new FormGroup({
     nome: new FormControl('', Validators.required),
     descricao: new FormControl(),
-    preco: new FormControl()
+    preco: new FormControl(),
+    
 
   });
 
   constructor() { }
-  get nome(): any { return this.data.get('nome'); }
-  get descricao(): any { return this.data.get('descricao'); }
-  get preco(): any { return this.data.get('preco'); }
+  get nome(): any { return this.form.get('nome'); }
+  get descricao(): any { return this.form.get('descricao'); }
+  get preco(): any { return this.form.get('preco'); }
   
   ngOnChanges(changes) {
     if (changes.produto.currentValue) {
-      this.data.patchValue(changes.produto.currentValue);
+      this.form.patchValue(changes.produto.currentValue);
     }
   }
   ngOnInit() {
-    this.data.valueChanges.subscribe(() => {
-      this.enableToSave = this.data.valid;
+    this.form.valueChanges.subscribe(() => {
+      this.enableToSave = this.form.valid;
     });
   }
   submit() {
-    this.save.emit({...this.data.value});
-    this.data.reset();
+    this.save.emit(this.form.value);
+    this.form.reset();
   }
 
 }

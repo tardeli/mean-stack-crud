@@ -23,6 +23,6 @@ export class ListComponent implements OnInit {
   }
   delete(produto) {
     console.log("produto: ", produto);
-    this.remove.emit({...produto});
+    this.remove.emit(produto);
   }
 }

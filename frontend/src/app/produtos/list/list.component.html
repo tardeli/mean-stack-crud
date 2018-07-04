@@ -1,4 +1,4 @@
-<div class="pre-scrollable">
+
   <table class="table table-bordered">
 
     <thead class="thead-light">
@@ -14,7 +14,7 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let produto of produtos">
+      <tr *ngFor="let produto of produtos | async">
         <td>{{produto.nome}}</td>
         <td>{{produto.descricao}}</td>
         <td>{{produto.preco}}</td>
@@ -40,4 +40,3 @@
     </tbody>
 
   </table>
-</div>

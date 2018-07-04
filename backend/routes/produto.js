@@ -11,8 +11,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  Produto.find({_id: req.params.id}).exec((err, produto) => {
+  Produto.findOne({_id: req.params.id}).exec((err, produto) => {
     res.json(produto);
+  });
+});
+
+router.get('/search/:field/:term', function(req, res, next) {
+  query = {};
+  query[req.params.field] = new RegExp(req.params.term, 'i');
+  Produto.find(query).exec((err, results) => {
+    res.json(results);
   });
 });
 

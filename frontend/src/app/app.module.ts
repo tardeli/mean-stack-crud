@@ -2,12 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ProdutosModule } from './produtos/produtos.module';
-import { ListComponent } from './produtos/list/list.component';
 import { ProdutoService } from './produtos/produto.service';
 import { HttpClientModule } from '@angular/common/http';
-import { FormComponent } from './produtos/form/form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { PagesModule } from './pages/pages.module';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
+import { SearchComponent } from './shared/search/search.component';
+
 
 @NgModule({
   declarations: [
@@ -15,17 +18,18 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    ProdutosModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule.forRoot([]),
+    PagesModule,
+    SharedModule
 
   ],
-  entryComponents: [
-    ListComponent,
-    FormComponent
-  ],
   providers: [ProdutoService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    SearchComponent
+  ]
 })
 export class AppModule { }

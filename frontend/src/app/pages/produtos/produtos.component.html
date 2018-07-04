@@ -1,0 +1,15 @@
+<div class="container" *ngIf="(pageProdutos | async)?.length as total">
+    <h3 class="mb-3">
+        Produtos
+        <small class="text-muted">Listagem</small>
+    </h3>
+    <div class="container" style="margin-bottom: 20px;">
+        <app-search (search)="search($event)"></app-search>
+    </div>
+    <div class="container">
+        <app-list [produtos]="pageProdutos" (update)="update($event)" (remove)="remove($event)"></app-list>
+    </div>
+    <div class="card-footer text-right">
+        {{total}} de usuários encontrados
+    </div>
+</div>

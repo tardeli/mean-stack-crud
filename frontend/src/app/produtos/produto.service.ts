@@ -27,4 +27,12 @@ export class ProdutoService {
   remove(id) {
     return this.http.delete(this.produtosUrl + id);
   }
+
+  get(id){
+    return this.http.get(this.produtosUrl + id);
+  }
+
+  search(field, term) {
+    return this.http.get(this.produtosUrl + `search/${field}/${term}`);
+  }
 }
