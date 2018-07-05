@@ -5,10 +5,11 @@ import { ProdutoUpdateComponent } from './produto-update/produto-update.componen
 import { ProdutoCreateComponent } from './produto-create/produto-create.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'produto-list', pathMatch: 'full' },
+  //{path: '', redirectTo: 'produto-list', pathMatch: 'full' },
   {path: 'produto-list', component:ProdutosComponent},
   {path: 'produto-update/:id', component:ProdutoUpdateComponent},
-  {path: 'produto-create', component:ProdutoCreateComponent}
+  {path: 'produto-create', component:ProdutoCreateComponent},
+  {path: 'produto-list/search/:field/:term', component:ProdutosComponent}
 
 ];
 

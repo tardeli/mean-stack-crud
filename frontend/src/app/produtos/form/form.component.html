@@ -1,6 +1,6 @@
 
 
-
+<div class="formulario">
       <form novalidate [formGroup]="form" (ngSubmit)="submit()" class="form-vertical">
 
             <div class="row">
@@ -16,14 +16,14 @@
             </div>
 
             <div class="row">
-                  <div class="col-md-1 form-group">
+                  <div class="col-md-2 form-group">
                         <button class="btn btn-success" [disabled]="!enableToSave">Salvar</button>
                   </div>
-                  <div class="col-md-1 form-group">
+                  <div class="col-md-2 form-group">
                         <button type="reset" class="btn btn-primary" [disabled]="!nome.value">Limpar</button>
                   </div>
             </div>
 
 
       </form>
-
+</div>

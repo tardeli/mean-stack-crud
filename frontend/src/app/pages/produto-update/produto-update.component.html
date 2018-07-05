@@ -1,5 +1,5 @@
-
+<div class="formulario">
   <h5>Alterar Produto: </h5>
   <app-form [produto]="produto$ | async" (save)="save($event)"></app-form>
   <p *ngIf="message">{{message}}</p>
-            
+</div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../../produtos/produto.service';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-produtos',
@@ -11,17 +11,39 @@ import { Router } from '@angular/router';
 export class ProdutosComponent implements OnInit {
 
   public pageProdutos: Observable<any>;
+  private param_Nome: Subscription;
 
   constructor(
     private service: ProdutoService,
-    public router: Router
-  ) { }
+    public router: Router,
+    private route: ActivatedRoute
+  ) { 
+    
+  }
 
   ngOnInit() {
+    this.param_Nome = this.route.params.subscribe(
+      (params: any)=>{
+        let nome = params['term'];
+        nome == null ?  this.listar() : this.filtrar(nome);
+      } 
+    );
+  }
+
+  ngOnDestroy(){
+    this.param_Nome.unsubscribe();
+  }
+
+  filtrar(nome){
+    this.pageProdutos = this.service.search('nome', nome);
+  }
+
+  listar(){
     this.pageProdutos = this.service.list();
-    this.pageProdutos.subscribe(response => {
+    //console
+    /*this.pageProdutos.subscribe(response => {
       console.table(response);
-    })
+    })*/
   }
 
   update(produto) {
@@ -36,10 +58,4 @@ export class ProdutosComponent implements OnInit {
       })
     }
   }
-
-  search(event) {
-    let term = (event.type == 'search') ? event.target.value : event;
-    this.pageProdutos = (term) ? this.service.search('nome', term) : this.service.list();
-  }
-
 }

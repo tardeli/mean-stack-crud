@@ -4,12 +4,17 @@
         <small class="text-muted">Listagem</small>
     </h3>
     <div class="container" style="margin-bottom: 20px;">
-        <app-search (search)="search($event)"></app-search>
+        
     </div>
     <div class="container">
         <app-list [produtos]="pageProdutos" (update)="update($event)" (remove)="remove($event)"></app-list>
     </div>
     <div class="card-footer text-right">
-        {{total}} de produtos encontrados
+        Existem {{total}} produtos cadastrados.
     </div>
+
+    
+</div>
+<div *ngIf="(pageProdutos | async)?.length < 1" >
+    <h5 class="mensagem">Nenhum produto cadastrado!</h5>
 </div>
